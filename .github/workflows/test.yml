@@ -45,4 +45,4 @@ jobs:
           MANAGEMENT_ACCOUNT=${{ secrets.MANAGEMENT_ACCOUNT }} sbt assembly
           docker build -t ${{ secrets.MANAGEMENT_ACCOUNT }}.dkr.ecr.eu-west-2.amazonaws.com/consignment-api:${{ env.NEW_VERSION }} .
           docker push ${{ secrets.MANAGEMENT_ACCOUNT }}.dkr.ecr.eu-west-2.amazonaws.com/consignment-api:${{ env.NEW_VERSION }}
-          gh workflow run .github/workflows/deploy.yml -f environment=intg -f to_deploy=${{ env.NEW_VERSION }}
+          gh workflow run "Deploy API" -f environment=intg -f to_deploy=${{ env.NEW_VERSION }}

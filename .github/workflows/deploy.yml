@@ -44,7 +44,7 @@ jobs:
       - name: Configure AWS credentials for ECS
         uses: aws-actions/configure-aws-credentials@v1
         with:
-          role-to-assume: arn:aws:iam::${{ secrets[account_secret_name] }}:role/TDRGitHubECSUpdateRoleIntg
+          role-to-assume: arn:aws:iam::${{ secrets[env.account_secret_name] }}:role/TDRGitHubECSUpdateRoleIntg
           aws-region: eu-west-2
           role-session-name: APIECRLogin
       - name: Deploy to ECS
