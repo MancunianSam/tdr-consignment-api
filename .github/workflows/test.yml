@@ -12,6 +12,8 @@ jobs:
     environment: intg
     steps:
       - name: Checkout
+        uses: actions/checkout@v2
+      - name: Run deploy
         run: gh workflow run "Deploy API" -f environment=intg -f to_deploy=v181
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
