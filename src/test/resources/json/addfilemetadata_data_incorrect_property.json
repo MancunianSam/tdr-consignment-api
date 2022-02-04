@@ -1,0 +1,14 @@
+{
+  "data": null,
+  "errors": [
+    {
+      "message": "IncorrectProperty found. We are only expecting checksum updates for now",
+      "locations": [
+        {
+          "column": 47,
+          "line": 1
+        }
+      ]
+    }
+  ]
+}

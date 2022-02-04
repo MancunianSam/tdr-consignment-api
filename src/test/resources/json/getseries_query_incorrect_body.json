@@ -1,0 +1,3 @@
+{
+  "query": "{getSeries(body: \"Code2\"){seriesid}}"
+}

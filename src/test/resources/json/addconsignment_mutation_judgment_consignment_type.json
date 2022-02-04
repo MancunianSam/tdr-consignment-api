@@ -1,0 +1,3 @@
+{
+  "query": "mutation {addConsignment(addConsignmentInput: {consignmentType: \"judgment\"}) {consignmentid, seriesid, userid, consignmentType}}"
+}
