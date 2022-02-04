@@ -22,7 +22,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
       - name: Set environment specific account name
-        run: gh workflow run gh workflow run nationalarchives/tdr-e2e-tests/.github/workflows/ci.yml@move-to-github-actions
+        run: gh workflow run nationalarchives/tdr-e2e-tests/.github/workflows/ci.yml@move-to-github-actions
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
