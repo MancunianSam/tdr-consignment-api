@@ -36,7 +36,7 @@ jobs:
           export EXISTING_VERSION=$(curl ${{ github.api_url }}/repos/nationalarchives/tdr-consignment-api/tags | jq -r '.[0].name')
           echo NEW_VERSION=$(echo "${EXISTING_VERSION:1}" | awk -F. '/[0-9]/{$NF+=1;OFS=".";print}' | xargs -I{} echo "v{}") >> $GITHUB_ENV
       - name: Build new image version
-        if: github.ref == 'refs/heads/main'
+        if: github.ref_name == 'main'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
