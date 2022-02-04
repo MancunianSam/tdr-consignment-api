@@ -36,7 +36,7 @@ jobs:
           export EXISTING_VERSION=$(curl ${{ github.api_url }}/repos/nationalarchives/tdr-consignment-api/tags | jq -r '.[0].name')
           echo NEW_VERSION=$(echo "${EXISTING_VERSION:1}" | awk -F. '/[0-9]/{$NF+=1;OFS=".";print}' | xargs -I{} echo "v{}") >> $GITHUB_ENV
       - name: Build new image version
-        if: github.ref == 'refs/heads/add-and-show-empty-folders'
+        if: github.ref == 'refs/heads/main'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
@@ -45,4 +45,4 @@ jobs:
           MANAGEMENT_ACCOUNT=${{ secrets.MANAGEMENT_ACCOUNT }} sbt assembly
           docker build -t ${{ secrets.MANAGEMENT_ACCOUNT }}.dkr.ecr.eu-west-2.amazonaws.com/consignment-api:${{ env.NEW_VERSION }} .
           docker push ${{ secrets.MANAGEMENT_ACCOUNT }}.dkr.ecr.eu-west-2.amazonaws.com/consignment-api:${{ env.NEW_VERSION }}
-          gh workflow run nationalarchives/tdr-consignment-api/.github/workflows/deploy.yml -f environment=intg -f to_deploy=${{ env.NEW_VERSION }} --ref add-and-show-empty-folders
+          gh workflow run .github/workflows/deploy.yml -f environment=intg -f to_deploy=${{ env.NEW_VERSION }}
